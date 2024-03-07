@@ -1,2 +1,2 @@
-#Algorithm24
-##my name is 주동현
+# Algorithm24
+## my name is 주동현

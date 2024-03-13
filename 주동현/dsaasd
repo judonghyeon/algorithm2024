@@ -1,0 +1,18 @@
+def find_max(a):
+    max_value = a[0]
+    for i in range(len(a)):
+        if a[i] > max_value:
+            max_value = a[i]
+    return max_value
+
+a = []
+while True:
+    user_input = int(input("숫자를 입력하세요 (음수로 종료): "))
+    if user_input < 0:  # 음수 입력 시 종료 조건
+        break
+    a.append(user_input)  # 사용자 입력을 리스트에 추가
+
+if a:  # a가 비어있지 않다면 최대값을 찾아 출력
+    print("최대값:", find_max(a))
+else:
+    print("리스트가 비어있습니다.")

@@ -1,0 +1,5 @@
+price = {'콩': 4500, '갈비탕': 9000, ' 돈가스': 8000}
+
+print("메뉴이름: \t\t가격:")
+for menu, cost in price.items():
+    print("{:<10}\t\t{}".format(menu.strip(), cost))

@@ -1,0 +1,19 @@
+import random as r
+def max_min(a):
+    min = a[0]
+    max = a[0]
+    for i in range(0,len(a),1):
+        if max > a[i]:
+            max = a[i]
+        if min < a[i]:
+            min = a[i]
+    print("가장 큰 수:", max)
+    print("가장 작은 수:", min)
+    return min, max
+
+b = []
+for i in range(0,10,1):
+    b.append(r.randrange(1,10))
+
+max_min(b)
+print(b)

@@ -1,0 +1,17 @@
+import random as r
+import my_info
+
+my_info.printmyinfo()
+
+def find_max(a):
+    max = a[0]
+    for i in range(len(a)):
+        if max < a[i]:  # 부등호 방향 수정하여 최댓값을 찾도록 변경
+            max = a[i]
+    return max
+
+b = []
+for i in range(0,100,1):
+    b.append(r.randrange(1,1230))
+
+print(find_max(b))

@@ -1,0 +1,31 @@
+import random as r
+
+def has_same_num(a, b):
+    for num_a in a:
+        if num_a in b:
+            return True
+    return False
+
+def same_num_and_print(a, b):
+    same_numbers = []
+    for num_a in a:
+        if num_a in b and num_a not in same_numbers:
+            same_numbers.append(num_a)
+    return same_numbers
+
+
+a = []
+b = []
+for i in range(10):
+    a.append(r.randrange(1, 10))
+    b.append(r.randrange(1, 10))
+
+same_numbers = same_num_and_print(a, b)
+if same_numbers:
+    print("같은숫자:", same_numbers)
+else:
+    print("같은 숫자가 없습니다.")
+
+print(a)
+print(b)
+print(has_same_num(a, b))

@@ -1,0 +1,26 @@
+def color_graph(graph):
+    node_colors = {}  # 노드와 색상을 매핑할 딕셔너리
+    for node in graph:
+        adjacent_colors = {node_colors[neighbor] for neighbor in graph[node] if neighbor in node_colors}  # 인접 노드의 색상 찾기
+        node_color = 1  # 현재 노드에 할당할 색상 번호
+        while node_color in adjacent_colors:  # 인접한 노드와 같은 색이면 다음 번호의 색을 사용
+            node_color += 1
+        node_colors[node] = node_color  # 현재 노드에 색상 할당
+
+    return node_colors  # 노드별 색상 할당 결과 반환
+
+# 주어진 그래프
+graph = {
+    'a': ['d', 'b'],
+    'b': ['a', 'c', 'e'],
+    'c': ['b', 'f', 'g'],
+    'd': ['a', 'e'],
+    'e': ['b', 'd', 'f'],
+    'f': ['e', 'c', 'g'],
+    'g': ['c', 'f']
+}
+
+# 함수 실행 및 결과 출력
+node_colors = color_graph(graph)
+for node, color in node_colors.items():
+    print(f'노드 {node} -> 색상 {color}')

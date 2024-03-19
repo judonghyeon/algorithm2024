@@ -1,0 +1,28 @@
+import random
+
+def is_proper_subset(list1, list2):
+    set1 = set(list1)
+    set2 = set(list2)
+    
+    if set1 == set2:
+        return False, "두 리스트가 동일합니다."
+    elif not set1.issubset(set2):
+        return False, "List 1의 일부 요소가 List 2에 포함되지 않습니다."
+    else:
+        return True, "List 1이 List 2의 진 부분집합입니다."
+
+def generate_random_lists_with_subset():
+    list1 = random.sample(range(1, 20), 5)  # 1부터 20 사이의 숫자 중 랜덤하게 5개를 선택
+    extra_elements = random.sample(range(1, 20), 3)  # list2에만 추가될 추가적인 요소들
+    list2 = list1 + extra_elements  # list1의 모든 요소와 추가적인 요소들을 합쳐 list2 생성
+    return list1, list2
+
+list1, list2 = generate_random_lists_with_subset()
+proper_subset, reason = is_proper_subset(list1, list2)
+
+print("List 1:", list1)
+print("List 2:", list2)
+if proper_subset:
+    print("List 1이 List 2의 진 부분집합인가?: 예,", reason)
+else:
+    print("List 1이 List 2의 진 부분집합인가?: 아니요,", reason)

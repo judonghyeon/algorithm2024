@@ -1,0 +1,44 @@
+def prob_17list():
+    a = int(input("노드의 갯수 : "))
+    alist = [0 for i in range(a)]
+    b = int(input("노드 #1 데이터 : "))
+    alist[0] = b
+    c = int(input("노드 #2 데이터 : "))
+    alist[1] = c
+    d = int(input("노드 #3 데이터 : "))
+    alist[2] = d 
+    print("리스트의 내용: ","[", alist[0], alist[1], alist[2],"]")
+
+
+class Node:
+    def __init__(self, data, link=None):
+        self.data = data
+        self.link = link
+
+# 사용자로부터 노드의 데이터를 입력받습니다.
+a = int(input("노드의 갯수 : "))
+
+# 첫 번째 노드 생성
+if a >= 1:
+    b = int(input("노드 #1 데이터 : "))
+    head = Node(b)  # head는 첫 번째 노드를 가리킵니다.
+
+# 두 번째 노드 생성 및 연결
+if a >= 2:
+    c = int(input("노드 #2 데이터 : "))
+    head.link = Node(c)
+
+# 세 번째 노드 생성 및 연결
+if a >= 3:
+    d = int(input("노드 #3 데이터 : "))
+    head.link.link = Node(d)
+
+# 연결 리스트의 내용을 출력합니다.
+print("노드의 내용: ", end=" ")
+current = head
+for i in range(a):
+    if current:
+        print(current.data, end=" ")
+        current = current.link
+    else:
+        break

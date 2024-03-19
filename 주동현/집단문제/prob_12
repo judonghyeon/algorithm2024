@@ -1,0 +1,14 @@
+def min_distance(A):
+    n = len(A)  # 배열 A의 길이 n을 구합니다.
+    if n < 2:  # 배열 A에 최소 2개 이상의 요소가 필요합니다.
+        return float('inf')  # 요소가 1개 또는 없을 경우 무한대를 반환합니다.
+    dmin = float('inf')  # dmin을 무한대로 초기화합니다.
+    for i in range(n):  # 0부터 n-1까지 반복합니다.
+        for j in range(n):  # 0부터 n-1까지 반복합니다.
+            if i != j and abs(A[i] - A[j]) < dmin:  # i와 j가 다르며, A[i]와 A[j]의 차이가 현재 dmin보다 작을 경우
+                dmin = abs(A[i] - A[j])  # dmin을 업데이트합니다.
+    print(dmin)
+    return dmin  # 최소 거리 dmin을 반환합니다.
+b = [1,2,3,4,5,6,78,9,9,7,65,4,2,34,5,6,4,0,234]
+
+min_distance(b)

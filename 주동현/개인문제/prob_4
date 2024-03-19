@@ -1,0 +1,10 @@
+def gcd3(a, b):
+    print(f"최대공약수를 찾기 위한 초기 값: a = {a}, b = {b}")
+    while b != 0:
+        r = a % b
+        print(f"a % b = {a} % {b} = {r}")
+        a = b
+        b = r
+    return a
+
+print('60과 28의 최대공약수:', gcd3(60, 28))

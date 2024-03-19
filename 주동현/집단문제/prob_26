@@ -1,0 +1,32 @@
+import random
+
+def is_proper_subset(list1, list2):
+    set1 = set(list1)
+    set2 = set(list2)
+    
+    if set1 == set2:
+        return False, "두 리스트가 동일합니다."
+    elif not set1.issubset(set2):
+        return False, "List 1의 일부 요소가 List 2에 포함되지 않습니다."
+    else:
+        return True, "List 1이 List 2의 진 부분집합입니다."
+
+def generate_random_lists():
+    list1 = random.sample(range(1, 20), 5)
+    list2 = random.sample(range(1, 20), 5)
+    return list1, list2
+
+loop_count = 0
+while True:
+    list1, list2 = generate_random_lists()
+    proper_subset, reason = is_proper_subset(list1, list2)
+    loop_count += 1
+    print(loop_count)
+    if proper_subset:
+        print("List 1:", list1)
+        print("List 2:", list2)
+        print("List 1이 List 2의 진 부분집합인가?: 예,", reason)
+        break
+
+print("루프 횟수:", loop_count)
+# 진부분집합을 찾으려면 반복문을 많이 돌려야됨. 그래서 26_copy에 진부분집합을 구별하는 코드 작성.

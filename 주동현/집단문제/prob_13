@@ -1,0 +1,21 @@
+def selection_sort(A):
+    n = len(A)
+    for i in range(n-1):
+        least = i
+        for j in range(i+1, n):  # i+1부터 n-1까지 반복합니다.
+            if A[j] < A[least]:
+                least = j
+        # A[i]와 A[least]의 값을 서로 교환합니다.
+        A[i], A[least] = A[least], A[i]
+
+# 예제 사용
+A = [3,7,9,4,2,8,1,5]
+print("Original array:", A)
+selection_sort(A)
+print("Sorted array:", A)
+
+# 선택 정렬은 비교기반 정렬 알고리즘입니다. 배열의 각 원소를 다른 원소와 비교하여 정렬 순서를 결정합니다.
+
+# 선택 정렬에서는 최소값을 찾아 현재 위치로 이동시킬 때, 동일한 값의 원소들 사이의 초기 순서가 보존되지 않을 수 있습니다. 그래서 안정성이 낮습니다.
+
+# 선택 정렬은 정렬 과정에서 원소의 위치만을 바꾸고, 추가적인 배열을 사용하지 않기 때문에 제자리 정렬입니다.

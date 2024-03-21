@@ -1,0 +1,48 @@
+# 실습일: 2024/03/21
+# 실습자: 주동현
+# 과목명: 알고리즘
+# 교수명: 송해상 교수님
+# 프로그램명: 팩토리얼 알고리즘
+
+def facto(n):
+    if n == 0:  
+        return 1
+    else:
+        result = n * facto(n-1)  
+        print(n, "번째 계산", result)
+        return result
+# 실습일: 2024/03/21
+# 실습자: 주동현
+# 과목명: 알고리즘
+# 교수명: 송해상 교수님
+# 프로그램명: 하노이의 탑 알고리즘
+
+def hanoi_tower(n,fr,tmp,to):
+    if(n==1):
+        print("원판1: %s --> %s" % (fr,to))
+    else:
+        hanoi_tower(n-1,fr,to,tmp)
+        print("원판%d: %s --> %s" % (n,fr,to))
+        hanoi_tower(n-1,tmp,fr,to)
+# 실습일: 2024/03/21
+# 실습자: 주동현
+# 과목명: 알고리즘
+# 교수명: 송해상 교수님
+# 프로그램명: 10진수 2진수 변경 알고리즘
+        
+def binary_digits(n):
+    if n <= 1:
+        print("몫: 0", "나머지:", n)  # n이 1 이하일 때는 몫이 0이고, 나머지는 n 자체입니다.
+        return 1
+    else:
+        b = n % 2  # 현재 숫자를 2로 나눈 나머지
+        n = n // 2  # 현재 숫자를 2로 나눈 몫
+        print("몫:", n, "나머지:", b)
+        return 1 + binary_digits(n)
+
+print(facto(10))
+
+hanoi_tower(4, 'A', 'B', 'C')
+
+
+binary_digits(16)

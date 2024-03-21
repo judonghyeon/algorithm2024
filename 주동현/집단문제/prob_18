@@ -9,7 +9,6 @@ def prob_17list():
     alist[2] = d 
     print("리스트의 내용: ","[", alist[0], alist[1], alist[2],"]")
 
-
 class Node:
     def __init__(self, data, link=None):
         self.data = data

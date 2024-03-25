@@ -2,33 +2,79 @@
 # 실습자: 주동현
 # 과목명: 알고리즘
 # 교수명: 송해상 교수님
-# 프로그램명: 팩토리얼 알고리즘
+# 프로그램명: 교재 예제 2.1번 순차 탐색
+def sequential_search(A, key):
+    for i in range(len(A)):
+        if A[i] == key:
+            return i
+    return  -1
 
-def facto(n):
-    if n == 0:  
-        return 1
-    else:
-        result = n * facto(n-1)  
-        print(n, "번째 계산", result)
-        return result
 # 실습일: 2024/03/21
 # 실습자: 주동현
 # 과목명: 알고리즘
 # 교수명: 송해상 교수님
-# 프로그램명: 하노이의 탑 알고리즘
+# 프로그램명: 교재 예제 2.2번 자연수의 제곱 계산 A
 
-def hanoi_tower(n,fr,tmp,to):
-    if(n==1):
-        print("원판1: %s --> %s" % (fr,to))
-    else:
-        hanoi_tower(n-1,fr,to,tmp)
-        print("원판%d: %s --> %s" % (n,fr,to))
-        hanoi_tower(n-1,tmp,fr,to)
+def compute_sqaure_A(n):
+    return n*n
+
 # 실습일: 2024/03/21
 # 실습자: 주동현
 # 과목명: 알고리즘
 # 교수명: 송해상 교수님
-# 프로그램명: 10진수 2진수 변경 알고리즘
+# 프로그램명: 교재 예제 2.3번 자연수의 제곱 계산 B
+
+def compute_sqaure_B(n):
+    sum = 0
+    for i in range(n):
+        sum = sum+n
+    return sum
+
+# 실습일: 2024/03/21
+# 실습자: 주동현
+# 과목명: 알고리즘
+# 교수명: 송해상 교수님
+# 프로그램명: 교재 예제 2.4번 자연수의 제곱 계산 C
+
+def compute_sqaure_C(n):
+    sum = 0
+    for i in range(n):
+        for j in range(n):
+            sum = sum + 1
+    return sum
+
+# 실습일: 2024/03/21
+# 실습자: 주동현
+# 과목명: 알고리즘
+# 교수명: 송해상 교수님
+# 프로그램명: 교재 예제 2.5번 리스트 중복항목 탐색
+
+def unique_elements(A):
+    n = len(A)
+    for i in range(n-1):
+        for j in range(i+1, n):
+            if A[i] == A[j]:
+                return False
+    return True
+
+# 실습일: 2024/03/21
+# 실습자: 주동현
+# 과목명: 알고리즘
+# 교수명: 송해상 교수님
+# 프로그램명: 교재 예제 2.6번 이진수 변환에서 총 비트수 계산(반복)
+
+def binary_digitss(n):
+    count =1
+    while n>1:
+        count = count +1
+        n=n//2
+    return count
+
+# 실습일: 2024/03/21
+# 실습자: 주동현
+# 과목명: 알고리즘
+# 교수명: 송해상 교수님
+# 프로그램명: 10진수 2진수 변경 알고리즘 확장
         
 def binary_digits(n):
     if n <= 1:
@@ -40,9 +86,83 @@ def binary_digits(n):
         print("몫:", n, "나머지:", b)
         return 1 + binary_digits(n)
 
-print(facto(10))
+# 실습일: 2024/03/21
+# 실습자: 주동현
+# 과목명: 알고리즘
+# 교수명: 송해상 교수님
+# 프로그램명: 교재 예제 2.7번 팩토리얼 알고리즘(순환)
 
+def factorial(n):
+    if n==1:
+        return 1
+    else:
+        return n * factorial(n-1)
+    
+# 실습일: 2024/03/21
+# 실습자: 주동현
+# 과목명: 알고리즘
+# 교수명: 송해상 교수님
+# 프로그램명: 교재 예제 2.8번 팩토리얼 알고리즘(반복)
+
+def factotial2(n):
+    result =1
+    for k in range(n,0,-1):
+        result = result *k
+    return result
+
+# 실습일: 2024/03/21
+# 실습자: 주동현
+# 과목명: 알고리즘
+# 교수명: 송해상 교수님
+# 프로그램명: 팩토리얼 알고리즘 확장
+
+def facto(n):
+    if n == 0:  
+        return 1
+    else:
+        result = n * facto(n-1)  
+        print(n, "번째 계산", result)
+        return result
+
+# 실습일: 2024/03/21
+# 실습자: 주동현
+# 과목명: 알고리즘
+# 교수명: 송해상 교수님
+# 프로그램명: 교재 예제 2.9번 하노이의 탑 알고리즘
+
+def hanoi_tower(n, fr, tmp, to):
+    if n == 1:
+        print("원판1: %s --> %s" % (fr, to))
+        return 1
+    else:
+        hanoi_tower(n - 1, fr, to, tmp)
+        print("원판%d: %s --> %s" % (n, fr, to))
+        hanoi_tower(n - 1, tmp, fr, to)
+        return 1
+
+# 함수 호출
 hanoi_tower(4, 'A', 'B', 'C')
 
-
-binary_digits(16)
+# 실습일: 2024/03/21
+# 실습자: 주동현
+# 과목명: 알고리즘
+# 교수명: 송해상 교수님
+# 프로그램명: 교재 예제 2.10번 이진수 변환에서 총 비트 수 계산
+    
+def binary_final_digits(n):
+    if n<=1:
+        return 1
+    else:
+        return 1+binary_final_digits(n//2)
+        
+print(1 ,sequential_search([1,2,3,4,5,6,7,8,9,10], 6))
+print(2, compute_sqaure_A(6))
+print(3, compute_sqaure_B(7))
+print(4, compute_sqaure_C(8))
+print(5, unique_elements([1,23,234,345,456,23,234,1]))
+print(5, unique_elements([1,23,234,345,456,234]))
+print(6, binary_digitss(12))
+print(7, factorial(5))
+print(8, factotial2(6))
+print(9, hanoi_tower(4, 'A', 'B','C'))
+print(10, binary_final_digits(21))

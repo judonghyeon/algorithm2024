@@ -1,0 +1,11 @@
+def sub(n):
+    if n<=1: 
+        return n 
+    return sub(n-1) + sub(n-2)
+sub(3)
+
+# 처음에 sub(3)을 호출합니다.
+# sub(3) 안에서 sub(2)와 sub(1)을 호출합니다.
+# sub(2) 안에서도 sub(1)과 sub(0)을 호출합니다.
+# sub(1)과 sub(0)은 더 이상 재귀 호출을 하지 않습니다.
+# 총 5번 호출합니다.

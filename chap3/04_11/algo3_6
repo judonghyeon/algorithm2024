@@ -1,0 +1,37 @@
+# 주어진 데이터
+data = {"A":10, "A_price": 60, "B":20, "B_price": 100, "C":30, "C_price":120}
+bag_vol = 60
+
+# 아이템의 무게와 가치를 분리하여 저장
+items = [(key, data[key], data[key + "_price"]) for key in data if not key.endswith("_price")]
+
+# 동적 프로그래밍을 사용해 배낭 문제 해결
+def knapsack(items, bag_vol):
+    """
+    items: (아이템명, 무게, 가치) 튜플들의 리스트
+    bag_vol: 배낭의 용량
+    """
+    n = len(items)
+    K = [[0 for _ in range(bag_vol + 1)] for _ in range(n + 1)]
+    selected_items = [[] for _ in range(n + 1)]  # 선택된 아이템들의 목록
+    
+    # 행렬을 채워 최대 가치 계산
+    for i in range(1, n + 1):
+        for w in range(1, bag_vol + 1):
+            if items[i-1][1] <= w:
+                if items[i-1][2] + K[i-1][w-items[i-1][1]] > K[i-1][w]:
+                    K[i][w] = items[i-1][2] + K[i-1][w-items[i-1][1]]
+                    selected_items[i] = selected_items[i-1] + [items[i-1][0]]
+                else:
+                    K[i][w] = K[i-1][w]
+                    selected_items[i] = selected_items[i-1]
+            else:
+                K[i][w] = K[i-1][w]
+                selected_items[i] = selected_items[i-1]
+                
+    return K[n][bag_vol], selected_items[n]
+
+# 최대 가치 및 선택된 아이템 계산
+max_value, selected_items = knapsack(items, bag_vol)
+print(f"최대 가치: {max_value}")
+print("선택된 아이템들:", selected_items)

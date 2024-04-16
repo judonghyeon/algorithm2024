@@ -1,0 +1,35 @@
+from collections import deque
+
+def bfs_spanning_tree(adjMat, start):
+    V = len(adjMat)  # 정점의 개수
+    visited = [False] * V  # 방문한 정점 표시
+    queue = deque([start])  # BFS를 위한 큐, 시작 정점을 포함시킴
+    visited[start] = True  # 시작 정점을 방문한 것으로 표시
+
+    # 신장 트리를 구성하는 간선을 저장할 리스트
+    spanning_tree_edges = []
+
+    while queue:
+        vertex = queue.popleft()
+
+        for i in range(V):
+            # i번 정점으로 연결되어 있고, 아직 방문하지 않았다면
+            if adjMat[vertex][i] != 0 and not visited[i]:
+                visited[i] = True  # i번 정점을 방문한 것으로 표시
+                queue.append(i)  # 큐에 추가
+                # 신장 트리에 간선 추가
+                spanning_tree_edges.append((chr(vertex+65), chr(i+65), adjMat[vertex][i]))
+
+    return spanning_tree_edges
+
+# 예제 인접 행렬
+adjMat = [[0, 2, 0, 6, 0],
+          [2, 0, 3, 8, 5],
+          [0, 3, 0, 0, 7],
+          [6, 8, 0, 0, 9],
+          [0, 5, 7, 9, 0]]
+
+# 신장 트리 생성
+spanning_tree = bfs_spanning_tree(adjMat, 0)  # 0번 정점(A)에서 시작
+for edge in spanning_tree:
+    print(f"Edge: {edge[0]}-{edge[1]}, Weight: {edge[2]}")

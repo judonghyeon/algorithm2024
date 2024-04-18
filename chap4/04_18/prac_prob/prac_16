@@ -1,0 +1,43 @@
+import random
+
+def powerMat(x,n):
+    if n==1:
+        return x
+    elif (n%2)==0:
+        return powerMat(multMat(x,x), n//2)
+    else:
+        return multMat(x, powerMat(multMat(x,x), (n-1) // 2))
+    
+def generate_matrix():
+    return [[random.randint(0, 9) for _ in range(2)] for _ in range(2)]
+
+def multMat(A, B):
+    result = [[0, 0], [0, 0]]
+    for i in range(len(A)):
+        for j in range(len(B[0])):
+            for k in range(len(B)):
+                result[i][j] += A[i][k] * B[k][j]
+    return result
+
+def print_matrix(matrix):
+    for row in matrix:
+        print(row)
+    print()
+
+# 랜덤한 2x2 행렬 생성
+matrixA = generate_matrix()
+matrixB = generate_matrix()
+
+# 행렬 출력
+print("Matrix A:")
+print_matrix(matrixA)
+
+print("Matrix B:")
+print_matrix(matrixB)
+
+# 행렬 곱 결과
+resultMatrix = multMat(matrixA, matrixB)
+print("Result of A * B:")
+print_matrix(resultMatrix)
+
+print(powerMat(matrixA, 2))

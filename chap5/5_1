@@ -1,0 +1,79 @@
+import random as r
+# 5.2
+# 1. 문제 정의
+# 나눠서 정렬된 리스트를 다시 원본에 합친다.
+# 2. 알고리즘 설명
+# 한쪽 부분 부분 리스트에 남아있는 모든 요소를 임시 리스트 sorted로 복사한 후, 슬라이스 기능을 활용하여 병합 한 후 다시 원래 리스트에 저장한다. 
+# 3. 손으로 푼 예제
+#
+# 4. 코드 개요
+#  A = 입력 리스트, left와 right는 리스트 내의 정렬하고자 하는 시작 항목과 끝 인덱스, mid = 리스트의 중간 부분() 이다.
+# 5. 코드
+#
+# 6. 테스트 코드
+#
+# 7. 수행 결과
+#
+# 8. 복잡도 분석
+# 조건문과 반복문 이므로 복잡도는 O(n)이다.
+# 9. 협력 내용
+# 5.1 5.2 5.3 모두 팀원들이랑 같이 풀었다.
+def merge(A, left, mid, right):
+    k = left
+    i = left
+    j = mid + 1
+    sorted_array = [0] * len(A)  # sorted 대신 sorted_array 사용
+    while i <= mid and j <= right:
+        if A[i] <= A[j]:
+            sorted_array[k] = A[i]
+            i, k = i + 1, k + 1
+        else:
+            sorted_array[k] = A[j]
+            j, k = j + 1, k + 1
+
+    while i <= mid:  # 남아있는 요소들을 복사
+        sorted_array[k] = A[i]
+        i, k = i + 1, k + 1
+
+    while j <= right:  # 남아있는 요소들을 복사
+        sorted_array[k] = A[j]
+        j, k = j + 1, k + 1
+
+    # 원본 배열 A에 정렬된 요소들을 복사
+    for index in range(left, right + 1):
+        A[index] = sorted_array[index]
+
+# 5.1
+# 1. 문제 정의
+# 병합 정렬의 병합 부분 코드이다
+# 2. 알고리즘 설명
+# 중간 부분을 중간 + 왼쪽, 중간+오른쪽을 나누어 2개의 리스트로 정렬을 한다.
+# 3. 손으로 푼 예제
+#
+# 4. 코드 개요
+# A = 입력 리스트, left와 right는 리스트 내의 정렬하고자 하는 시작 항목과 끝 인덱스 이다.
+# 5. 코드
+#
+# 6. 테스트 코드
+#
+# 7. 수행 결과
+#
+# 8. 복잡도 분석
+# 5.1은 O(1) 이다.
+# 9. 협력 내용
+# 5.1 5.2 5.3 모두 팀원들이랑 같이 풀었다.
+
+def merge_sort(A, left, right):
+    if left<right:
+        mid=(left+right)//2
+        merge_sort(A, left, mid)
+        merge_sort(A, mid+1, right)
+        merge(A, left, mid, right)
+
+
+A = [r.randint(0, 100) for i in range(10)]
+
+print(A)
+
+merge_sort(A, 0, len(A)-1)
+print(A)
